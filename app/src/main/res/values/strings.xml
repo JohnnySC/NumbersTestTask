@@ -3,4 +3,5 @@
     <string name="get_fact">get fact</string>
     <string name="get_random_fact">get random fact</string>
     <string name="input_a_number">input a number</string>
+    <string name="empty_number_error_message">Please enter a number</string>
 </resources>
