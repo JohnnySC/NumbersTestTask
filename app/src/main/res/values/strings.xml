@@ -4,4 +4,6 @@
     <string name="get_random_fact">get random fact</string>
     <string name="input_a_number">input a number</string>
     <string name="empty_number_error_message">Please enter a number</string>
+    <string name="no_connection_message">No internet connection</string>
+    <string name="service_is_unavailable">Service is unavailable</string>
 </resources>

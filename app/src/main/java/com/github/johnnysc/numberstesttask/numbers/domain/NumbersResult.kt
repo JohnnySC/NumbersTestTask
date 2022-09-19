@@ -15,7 +15,7 @@ sealed class NumbersResult {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(list, "")
     }
 
-    class Failure(private val message: String) : NumbersResult() {
+    data class Failure(private val message: String) : NumbersResult() {
         override fun <T> map(mapper: Mapper<T>): T = mapper.map(emptyList(), message)
     }
 }
