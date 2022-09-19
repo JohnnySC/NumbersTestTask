@@ -6,11 +6,11 @@ import com.github.johnnysc.numberstesttask.numbers.presentation.ManageResources
 /**
  * @author Asatryan on 19.09.2022
  */
-interface HandleError {
+interface HandleError<T> {
 
-    fun handle(e: Exception): String
+    fun handle(e: Exception): T
 
-    class Base(private val manageResources: ManageResources) : HandleError {
+    class Base(private val manageResources: ManageResources) : HandleError<String> {
 
         override fun handle(e: Exception) = manageResources.string(
             when (e) {
