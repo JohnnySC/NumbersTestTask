@@ -1,4 +1,6 @@
-package com.github.johnnysc.numberstesttask.numbers.data
+package com.github.johnnysc.numberstesttask.numbers.data.cache
+
+import com.github.johnnysc.numberstesttask.numbers.data.NumberData
 
 /**
  * @author Asatryan on 19.09.2022

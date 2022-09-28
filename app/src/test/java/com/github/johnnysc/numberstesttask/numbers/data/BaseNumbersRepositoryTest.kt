@@ -1,5 +1,7 @@
 package com.github.johnnysc.numberstesttask.numbers.data
 
+import com.github.johnnysc.numberstesttask.numbers.data.cache.NumbersCacheDataSource
+import com.github.johnnysc.numberstesttask.numbers.data.cloud.NumbersCloudDataSource
 import com.github.johnnysc.numberstesttask.numbers.domain.NoInternetConnectionException
 import com.github.johnnysc.numberstesttask.numbers.domain.NumberFact
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersRepository

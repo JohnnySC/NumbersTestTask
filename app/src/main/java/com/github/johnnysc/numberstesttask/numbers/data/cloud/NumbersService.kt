@@ -1,4 +1,4 @@
-package com.github.johnnysc.numberstesttask.numbers.data
+package com.github.johnnysc.numberstesttask.numbers.data.cloud
 
 import retrofit2.Response
 import retrofit2.http.GET

@@ -2,7 +2,7 @@ package com.github.johnnysc.numberstesttask.main
 
 import android.app.Application
 import com.github.johnnysc.numberstesttask.BuildConfig
-import com.github.johnnysc.numberstesttask.numbers.data.CloudModule
+import com.github.johnnysc.numberstesttask.numbers.data.cloud.CloudModule
 
 /**
  * @author Asatryan on 26.09.2022

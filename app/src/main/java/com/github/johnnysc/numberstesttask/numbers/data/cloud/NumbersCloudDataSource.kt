@@ -1,4 +1,7 @@
-package com.github.johnnysc.numberstesttask.numbers.data
+package com.github.johnnysc.numberstesttask.numbers.data.cloud
+
+import com.github.johnnysc.numberstesttask.numbers.data.NumberData
+import com.github.johnnysc.numberstesttask.numbers.data.cache.FetchNumber
 
 /**
  * @author Asatryan on 19.09.2022
