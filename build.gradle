@@ -8,3 +8,7 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    roomVersion = '2.4.1'
+}
