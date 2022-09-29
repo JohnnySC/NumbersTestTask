@@ -1,8 +1,8 @@
 # NumbersTestTask
 Тестовое задание, которое я делаю на ютуб
 
-Первая часть
-https://www.youtube.com/watch?v=NJG6vuFwXeo
+Плейлист на YouTube
+https://www.youtube.com/playlist?list=PLQRyeBV1rkk25DY7C2wPhAukxpDdoeuPf
 
 Описание задачи
 Test task for the position of an Android Developer
