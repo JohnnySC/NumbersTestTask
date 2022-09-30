@@ -3,10 +3,13 @@ package com.github.johnnysc.numberstesttask.main.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelStoreOwner
 import com.github.johnnysc.numberstesttask.R
+import com.github.johnnysc.numberstesttask.main.sl.ProvideViewModel
 import com.github.johnnysc.numberstesttask.numbers.presentation.NumbersFragment
 
-class MainActivity : AppCompatActivity(), ShowFragment {
+class MainActivity : AppCompatActivity(), ShowFragment, ProvideViewModel {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,9 @@ class MainActivity : AppCompatActivity(), ShowFragment {
             transaction.replace(container, fragment)
         transaction.commit()
     }
+
+    override fun <T : ViewModel> provideViewModel(clazz: Class<T>, owner: ViewModelStoreOwner): T =
+        (application as ProvideViewModel).provideViewModel(clazz, owner)
 }
 
 interface ShowFragment {
