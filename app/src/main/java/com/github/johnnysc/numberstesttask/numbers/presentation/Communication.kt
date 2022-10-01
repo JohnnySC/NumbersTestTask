@@ -3,6 +3,7 @@ package com.github.johnnysc.numberstesttask.numbers.presentation
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.github.johnnysc.numberstesttask.main.presentation.SingleLiveEvent
 
 /**
  * @author Asatryan on 18.09.2022
@@ -39,4 +40,7 @@ interface Communication {
     ) : Abstract<T>(liveData) {
         override fun map(source: T) = liveData.postValue(source)
     }
+
+    abstract class SingleUi<T> : Ui<T>(SingleLiveEvent())
+    abstract class SinglePost<T> : Post<T>(SingleLiveEvent())
 }

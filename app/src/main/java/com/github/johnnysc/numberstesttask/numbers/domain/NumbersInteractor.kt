@@ -1,9 +1,13 @@
 package com.github.johnnysc.numberstesttask.numbers.domain
 
+import com.github.johnnysc.numberstesttask.details.data.NumberFactDetails
+
 /**
  * @author Asatryan on 18.09.2022
  */
 interface NumbersInteractor {
+
+    fun saveDetails(details: String)
 
     suspend fun init(): NumbersResult
 
@@ -13,8 +17,11 @@ interface NumbersInteractor {
 
     class Base(
         private val repository: NumbersRepository,
-        private val handleRequest: HandleRequest
+        private val handleRequest: HandleRequest,
+        private val numberFactDetails: NumberFactDetails.Save
     ) : NumbersInteractor {
+
+        override fun saveDetails(details: String) = numberFactDetails.save(details)
 
         override suspend fun init() = NumbersResult.Success(repository.allNumbers())
 
