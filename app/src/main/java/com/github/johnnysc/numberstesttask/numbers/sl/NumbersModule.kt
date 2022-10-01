@@ -19,9 +19,9 @@ import com.github.johnnysc.numberstesttask.numbers.presentation.*
 /**
  * @author Asatryan on 30.09.2022
  */
-class NumbersModule(private val core: Core) : Module<NumbersViewModel> {
+class NumbersModule(private val core: Core) : Module<NumbersViewModel.Base> {
 
-    override fun viewModel(): NumbersViewModel {
+    override fun viewModel(): NumbersViewModel.Base {
         val communications = NumbersCommunications.Base(
             ProgressCommunication.Base(),
             NumbersStateCommunication.Base(),
@@ -43,7 +43,7 @@ class NumbersModule(private val core: Core) : Module<NumbersViewModel> {
             ),
             NumberDataToDomain()
         )
-        return NumbersViewModel(
+        return NumbersViewModel.Base(
             HandleNumbersRequest.Base(
                 core.provideDispatchers(),
                 communications,
@@ -56,8 +56,11 @@ class NumbersModule(private val core: Core) : Module<NumbersViewModel> {
                 HandleRequest.Base(
                     HandleError.Base(core),
                     repository
-                )
-            )
+                ),
+                core.provideNumberDetails()
+            ),
+            core.provideNavigation(),
+            DetailsUi()
         )
     }
 }

@@ -2,12 +2,25 @@ package com.github.johnnysc.numberstesttask.numbers.presentation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.github.johnnysc.numberstesttask.main.presentation.NavigationCommunication
+import com.github.johnnysc.numberstesttask.main.presentation.NavigationStrategy
 
 /**
  * @author Asatryan on 18.09.2022
  */
 abstract class BaseTest {
 
+    protected class TestNavigationCommunication : NavigationCommunication.Mutable {
+
+        lateinit var strategy: NavigationStrategy
+        var count = 0
+        override fun observe(owner: LifecycleOwner, observer: Observer<NavigationStrategy>) =Unit
+
+        override fun map(source: NavigationStrategy) {
+            strategy = source
+            count++
+        }
+    }
     protected class TestNumbersCommunications : NumbersCommunications {
 
         val progressCalledList = mutableListOf<Int>()

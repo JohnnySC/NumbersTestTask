@@ -1,6 +1,8 @@
 package com.github.johnnysc.numberstesttask.main.sl
 
 import android.content.Context
+import com.github.johnnysc.numberstesttask.details.data.NumberFactDetails
+import com.github.johnnysc.numberstesttask.main.presentation.NavigationCommunication
 import com.github.johnnysc.numberstesttask.numbers.data.cache.CacheModule
 import com.github.johnnysc.numberstesttask.numbers.data.cloud.CloudModule
 import com.github.johnnysc.numberstesttask.numbers.presentation.DispatchersList
@@ -9,7 +11,8 @@ import com.github.johnnysc.numberstesttask.numbers.presentation.ManageResources
 /**
  * @author Asatryan on 30.09.2022
  */
-interface Core : CloudModule, CacheModule, ManageResources {
+interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
+    ProvideNumberDetails {
 
     fun provideDispatchers(): DispatchersList
 
@@ -17,6 +20,10 @@ interface Core : CloudModule, CacheModule, ManageResources {
         context: Context,
         private val provideInstances: ProvideInstances
     ) : Core {
+
+        private val numberDetails = NumberFactDetails.Base()
+
+        private val navigationCommunication = NavigationCommunication.Base()
 
         private val manageResources: ManageResources = ManageResources.Base(context)
 
@@ -37,7 +44,18 @@ interface Core : CloudModule, CacheModule, ManageResources {
 
         override fun string(id: Int) = manageResources.string(id)
 
-        override fun provideDispatchers() = dispatchersList
+        override fun provideNavigation() = navigationCommunication
 
+        override fun provideNumberDetails(): NumberFactDetails.Mutable = numberDetails
+
+        override fun provideDispatchers() = dispatchersList
     }
+}
+
+interface ProvideNavigation {
+    fun provideNavigation(): NavigationCommunication.Mutable
+}
+
+interface ProvideNumberDetails {
+    fun provideNumberDetails(): NumberFactDetails.Mutable
 }
