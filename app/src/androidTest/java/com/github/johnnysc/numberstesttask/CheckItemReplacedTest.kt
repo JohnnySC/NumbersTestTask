@@ -9,15 +9,15 @@ class CheckItemReplacedTest : BaseTest() {
 
     @Test
     fun test_history(): Unit = NumbersPage().run {
-        input.view().typeText("1")
-        getFactButton.view().click()
+        input.typeText("1")
+        getFactButton.click()
         recycler.run {
             viewInRecycler(0, titleItem).checkText("1")
             viewInRecycler(0, subTitleItem).checkText("fact about 1")
         }
 
-        input.view().typeText("2")
-        getFactButton.view().click()
+        input.typeText("2")
+        getFactButton.click()
         recycler.run {
             viewInRecycler(0, titleItem).checkText("2")
             viewInRecycler(0, subTitleItem).checkText("fact about 2")
@@ -25,8 +25,8 @@ class CheckItemReplacedTest : BaseTest() {
             viewInRecycler(1, subTitleItem).checkText("fact about 1")
         }
 
-        input.view().typeText("1")
-        getFactButton.view().click()
+        input.typeText("1")
+        getFactButton.click()
         recycler.run {
             viewInRecycler(0, titleItem).checkText("1")
             viewInRecycler(0, subTitleItem).checkText("fact about 1")
