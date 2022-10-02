@@ -12,7 +12,7 @@ import com.github.johnnysc.numberstesttask.numbers.presentation.ManageResources
  * @author Asatryan on 30.09.2022
  */
 interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
-    ProvideNumberDetails {
+    ProvideNumberDetails, ProvideRandomApiHeader {
 
     fun provideDispatchers(): DispatchersList
 
@@ -30,6 +30,7 @@ interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
         private val dispatchersList by lazy {
             DispatchersList.Base()
         }
+
         private val cloudModule by lazy {
             provideInstances.provideCloudModule()
         }
@@ -47,6 +48,8 @@ interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
         override fun provideNavigation() = navigationCommunication
 
         override fun provideNumberDetails(): NumberFactDetails.Mutable = numberDetails
+
+        override fun provideRandomApiHeader() = provideInstances.provideRandomApiHeader()
 
         override fun provideDispatchers() = dispatchersList
     }

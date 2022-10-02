@@ -33,7 +33,8 @@ class NumbersModule(private val core: Core) : Module<NumbersViewModel.Base> {
         )
         val repository = BaseNumbersRepository(
             NumbersCloudDataSource.Base(
-                core.service(NumbersService::class.java)
+                core.service(NumbersService::class.java),
+                core.provideRandomApiHeader()
             ),
             cacheDataSource,
             HandleDataRequest.Base(

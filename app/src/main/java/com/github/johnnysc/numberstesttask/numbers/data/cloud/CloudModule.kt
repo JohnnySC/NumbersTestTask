@@ -13,16 +13,13 @@ interface CloudModule {
 
     fun <T> service(clasz: Class<T>): T
 
-    class Mock : CloudModule {
-        override fun <T> service(clasz: Class<T>): T {
-            return MockNumbersService() as T
-        }
+    class Mock(private val randomApiHeader: RandomApiHeader.MockResponse) : CloudModule {
+        override fun <T> service(clasz: Class<T>): T = MockNumbersService(randomApiHeader) as T
     }
 
     class Base : CloudModule {
 
         override fun <T> service(clasz: Class<T>): T {
-            //todo refactor when service locator
             val interceptor = HttpLoggingInterceptor().apply {
                 setLevel(HttpLoggingInterceptor.Level.BODY)
             }
