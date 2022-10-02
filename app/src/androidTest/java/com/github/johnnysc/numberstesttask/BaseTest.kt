@@ -7,11 +7,20 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.github.johnnysc.numberstesttask.main.presentation.MainActivity
+import org.junit.Rule
+import org.junit.runner.RunWith
 
 /**
  * @author Asatryan on 02.10.2022
  */
+@RunWith(AndroidJUnit4::class)
 abstract class BaseTest {
+
+    @get:Rule
+    var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     protected fun Int.view() = onView(withId(this))
 

@@ -6,6 +6,7 @@ package com.github.johnnysc.numberstesttask
 class NumbersPage : Page() {
 
     val getFactButton = R.id.getFactButton
+    val randomButton = R.id.randomFactButton
     val input = R.id.inputEditText
     val recycler = R.id.recyclerView
 
