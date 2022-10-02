@@ -5,10 +5,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.johnnysc.numberstesttask.R
-import com.github.johnnysc.numberstesttask.details.presentation.NumberDetailsFragment
 import com.github.johnnysc.numberstesttask.main.presentation.Init
 import com.github.johnnysc.numberstesttask.main.presentation.NavigationCommunication
 import com.github.johnnysc.numberstesttask.main.presentation.NavigationStrategy
+import com.github.johnnysc.numberstesttask.main.presentation.Screen
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersInteractor
 
 /**
@@ -60,7 +60,7 @@ interface NumbersViewModel : Init, FetchNumbers, ObserveNumbers, ClearError {
 
         override fun showDetails(item: NumberUi) {
             interactor.saveDetails(item.map(detailsMapper))
-            navigationCommunication.map(NavigationStrategy.Add(NumberDetailsFragment()))
+            navigationCommunication.map(NavigationStrategy.Add(Screen.Details))
         }
     }
 }
