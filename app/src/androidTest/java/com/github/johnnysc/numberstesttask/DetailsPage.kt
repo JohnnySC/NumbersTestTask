@@ -5,5 +5,5 @@ package com.github.johnnysc.numberstesttask
  */
 class DetailsPage : Page() {
 
-    val details = R.id.detailsTextView
+    val details = R.id.detailsTextView.view()
 }

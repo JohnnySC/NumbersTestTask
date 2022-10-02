@@ -12,8 +12,8 @@ class NavigationTest : BaseTest() {
     fun details_navigation() {
         val numbersPage = NumbersPage()
         numbersPage.run {
-            input.view().typeText("10")
-            getFactButton.view().click()
+            input.typeText("10")
+            getFactButton.click()
 
             recycler.run {
                 viewInRecycler(0, titleItem).checkText("10")
@@ -22,7 +22,7 @@ class NavigationTest : BaseTest() {
             }
         }
 
-        DetailsPage().details.view().checkText("10\n\nfact about 10")
+        DetailsPage().details.checkText("10\n\nfact about 10")
 
         pressBack()
 

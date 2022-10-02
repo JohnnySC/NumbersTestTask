@@ -22,8 +22,6 @@ abstract class BaseTest {
     @get:Rule
     var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
-    protected fun Int.view() = onView(withId(this))
-
     protected fun ViewInteraction.typeText(value: String) {
         perform(ViewActions.typeText(value))
         closeSoftKeyboard()
