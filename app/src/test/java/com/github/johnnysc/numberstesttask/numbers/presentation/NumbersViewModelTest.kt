@@ -2,6 +2,7 @@ package com.github.johnnysc.numberstesttask.numbers.presentation
 
 import android.view.View
 import com.github.johnnysc.numberstesttask.main.presentation.NavigationStrategy
+import com.github.johnnysc.numberstesttask.main.presentation.Screen
 import com.github.johnnysc.numberstesttask.numbers.domain.NumberFact
 import com.github.johnnysc.numberstesttask.numbers.domain.NumberUiMapper
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersInteractor
@@ -153,7 +154,7 @@ class NumbersViewModelTest : BaseTest() {
 
         assertEquals("0 fact", interactor.details)
         assertEquals(1, navigation.count)
-        assertEquals(true, navigation.strategy is NavigationStrategy.Add)
+        assertEquals(NavigationStrategy.Add(Screen.Details), navigation.strategy)
     }
 
     private class TestManageResources : ManageResources {
