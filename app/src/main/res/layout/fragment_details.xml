@@ -4,9 +4,11 @@
     android:id="@+id/detailsTextView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
     android:gravity="center_horizontal"
     android:padding="@dimen/margin_small"
-    android:background="@color/white"
-    android:textColor="@color/black"
     android:textAppearance="@style/TextAppearance.AppCompat.Title"
+    android:textColor="@color/black"
     tools:text="Some details of the number" />
