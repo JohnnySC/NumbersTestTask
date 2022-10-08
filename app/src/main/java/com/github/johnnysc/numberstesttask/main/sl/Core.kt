@@ -7,12 +7,13 @@ import com.github.johnnysc.numberstesttask.numbers.data.cache.CacheModule
 import com.github.johnnysc.numberstesttask.numbers.data.cloud.CloudModule
 import com.github.johnnysc.numberstesttask.numbers.presentation.DispatchersList
 import com.github.johnnysc.numberstesttask.numbers.presentation.ManageResources
+import com.github.johnnysc.numberstesttask.random.WorkManagerWrapper
 
 /**
  * @author Asatryan on 30.09.2022
  */
 interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
-    ProvideNumberDetails, ProvideRandomApiHeader {
+    ProvideNumberDetails, ProvideRandomApiHeader, ProvideWorkManagerWrapper {
 
     fun provideDispatchers(): DispatchersList
 
@@ -20,6 +21,8 @@ interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
         context: Context,
         private val provideInstances: ProvideInstances
     ) : Core {
+
+        private val workManagerWrapper: WorkManagerWrapper = WorkManagerWrapper.Base(context)
 
         private val numberDetails = NumberFactDetails.Base()
 
@@ -51,8 +54,14 @@ interface Core : CloudModule, CacheModule, ManageResources, ProvideNavigation,
 
         override fun provideRandomApiHeader() = provideInstances.provideRandomApiHeader()
 
+        override fun provideWorkManagerWrapper() = workManagerWrapper
+
         override fun provideDispatchers() = dispatchersList
     }
+}
+
+interface ProvideWorkManagerWrapper {
+    fun provideWorkManagerWrapper(): WorkManagerWrapper
 }
 
 interface ProvideNavigation {
