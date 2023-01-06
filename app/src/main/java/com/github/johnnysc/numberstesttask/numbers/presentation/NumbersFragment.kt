@@ -20,7 +20,7 @@ class NumbersFragment : BaseFragment<NumbersViewModel.Base>() {
     override val viewModelClass = NumbersViewModel.Base::class.java
     override val layoutId = R.layout.fragment_numbers
 
-    private lateinit var inputEditText: TextInputEditText
+    private lateinit var inputEditText: BaseCustomTextInputEditText
 
     private val watcher = object : SimpleTextWatcher() {
         override fun afterTextChanged(s: Editable?) = viewModel.clearError()
@@ -31,7 +31,7 @@ class NumbersFragment : BaseFragment<NumbersViewModel.Base>() {
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
         val factButton = view.findViewById<Button>(R.id.getFactButton)
         val randomButton = view.findViewById<Button>(R.id.randomFactButton)
-        val inputLayout = view.findViewById<TextInputLayout>(R.id.textInputLayout)
+        val inputLayout = view.findViewById<BaseCustomTextInputLayout>(R.id.textInputLayout)
         inputEditText = view.findViewById(R.id.inputEditText)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = NumbersAdapter(object : ClickListener {

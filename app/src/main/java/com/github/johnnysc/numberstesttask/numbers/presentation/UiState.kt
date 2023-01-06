@@ -1,21 +1,21 @@
 package com.github.johnnysc.numberstesttask.numbers.presentation
 
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-
 /**
  * @author Asatryan on 18.09.2022
  */
 sealed class UiState {
 
-    abstract fun apply(inputLayout: TextInputLayout, textInputEditText: TextInputEditText)
+    abstract fun apply(
+        inputLayout: CustomTextInputLayout,
+        textInputEditText: CustomTextInputEditText
+    )
 
     class Success : UiState() {
 
         override fun apply(
-            inputLayout: TextInputLayout,
-            textInputEditText: TextInputEditText
-        ) = textInputEditText.setText("")
+            inputLayout: CustomTextInputLayout,
+            textInputEditText: CustomTextInputEditText
+        ) = textInputEditText.showText("")
     }
 
     abstract class AbstractError(
@@ -24,11 +24,11 @@ sealed class UiState {
     ) : UiState() {
 
         override fun apply(
-            inputLayout: TextInputLayout,
-            textInputEditText: TextInputEditText
+            inputLayout: CustomTextInputLayout,
+            textInputEditText: CustomTextInputEditText
         ) = with(inputLayout) {
-            isErrorEnabled = errorEnabled
-            error = message
+            changeErrorEnabled(errorEnabled)
+            showError(message)
         }
     }
 

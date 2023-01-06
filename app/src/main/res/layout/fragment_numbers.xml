@@ -13,18 +13,18 @@
         android:visibility="visible"
         tools:visibility="gone" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.github.johnnysc.numberstesttask.numbers.presentation.BaseCustomTextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/input_a_number">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.github.johnnysc.numberstesttask.numbers.presentation.BaseCustomTextInputEditText
             android:id="@+id/inputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.github.johnnysc.numberstesttask.numbers.presentation.BaseCustomTextInputLayout>
 
     <Button
         android:id="@+id/getFactButton"
