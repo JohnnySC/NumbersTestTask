@@ -15,7 +15,7 @@ class NumbersResultMapperTest : BaseTest() {
         val communications = TestNumbersCommunications()
         val mapper = NumbersResultMapper(communications, NumberUiMapper())
 
-        mapper.map(emptyList(), "not empty message")
+        mapper.map("not empty message")
 
         assertEquals(UiState.ShowError("not empty message"), communications.stateCalledList[0])
     }
@@ -25,7 +25,7 @@ class NumbersResultMapperTest : BaseTest() {
         val communications = TestNumbersCommunications()
         val mapper = NumbersResultMapper(communications, NumberUiMapper())
 
-        mapper.map(emptyList(), "")
+        mapper.map(emptyList())
 
         assertEquals(0, communications.timesShowList)
         assertEquals(true, communications.stateCalledList[0] is UiState.Success)
@@ -36,7 +36,7 @@ class NumbersResultMapperTest : BaseTest() {
         val communications = TestNumbersCommunications()
         val mapper = NumbersResultMapper(communications, NumberUiMapper())
 
-        mapper.map(listOf(NumberFact("5", "fact 5")), "")
+        mapper.map(listOf(NumberFact("5", "fact 5")))
 
         assertEquals(true, communications.stateCalledList[0] is UiState.Success)
         assertEquals(1, communications.timesShowList)
