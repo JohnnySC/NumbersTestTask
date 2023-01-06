@@ -5,12 +5,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
-import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.github.johnnysc.numberstesttask.R
 import com.github.johnnysc.numberstesttask.main.presentation.BaseFragment
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 /**
  * @author Asatryan on 16.09.2022
@@ -28,7 +25,7 @@ class NumbersFragment : BaseFragment<NumbersViewModel.Base>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val progressBar = view.findViewById<View>(R.id.progressBar)
         val factButton = view.findViewById<Button>(R.id.getFactButton)
         val randomButton = view.findViewById<Button>(R.id.randomFactButton)
         val inputLayout = view.findViewById<BaseCustomTextInputLayout>(R.id.textInputLayout)
