@@ -4,6 +4,7 @@ import android.view.View
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersResult
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 interface HandleNumbersRequest {
 
@@ -25,8 +26,10 @@ interface HandleNumbersRequest {
             communications.showProgress(View.VISIBLE)
             coroutineScope.launch(dispatchers.io()) {
                 val result = block.invoke()
-                communications.showProgress(View.GONE)
-                result.map(numbersResultMapper)
+                withContext(dispatchers.ui()) {
+                    communications.showProgress(View.GONE)
+                    result.map(numbersResultMapper)
+                }
             }
         }
     }

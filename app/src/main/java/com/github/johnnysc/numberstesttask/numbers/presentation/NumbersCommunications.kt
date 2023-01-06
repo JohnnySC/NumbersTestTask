@@ -47,13 +47,13 @@ interface ObserveNumbers {
 }
 
 interface ProgressCommunication : Communication.Mutable<Int> {
-    class Base : Communication.Post<Int>(), ProgressCommunication
+    class Base : Communication.Ui<Int>(), ProgressCommunication
 }
 
 interface NumbersStateCommunication : Communication.Mutable<UiState> {
-    class Base : Communication.Post<UiState>(), NumbersStateCommunication
+    class Base : Communication.Ui<UiState>(), NumbersStateCommunication
 }
 
 interface NumbersListCommunication : Communication.Mutable<List<NumberUi>> {
-    class Base : Communication.Post<List<NumberUi>>(), NumbersListCommunication
+    class Base : Communication.Ui<List<NumberUi>>(), NumbersListCommunication
 }
