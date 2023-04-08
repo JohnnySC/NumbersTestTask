@@ -32,18 +32,15 @@ class NumbersViewModelTest : BaseTest() {
         interactor = TestNumbersInteractor()
         manageResources = TestManageResources()
         val detailsMapper = TestUiMapper()
+        val mapper = NumbersResultMapper(communications, NumberUiMapper())
         viewModel =
             NumbersViewModel.Base(
-                HandleNumbersRequest.Base(
-                    TestDispatchersList(),
-                    communications,
-                    NumbersResultMapper(communications, NumberUiMapper())
-                ),
-                manageResources,
-                communications,
-                interactor,
-                navigation,
-                detailsMapper
+                TestDispatchersList(),
+                NumbersInitialFeature(communications, mapper, interactor),
+                NumbersFactFeature.Base(manageResources, communications, mapper, interactor),
+                RandomNumberFactFeature(interactor, communications, mapper),
+                ShowDetails.Base(interactor, navigation, detailsMapper),
+                communications
             )
     }
 

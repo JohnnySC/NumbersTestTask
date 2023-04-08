@@ -5,15 +5,11 @@ import com.github.johnnysc.numberstesttask.details.data.NumberFactDetails
 /**
  * @author Asatryan on 18.09.2022
  */
-interface NumbersInteractor {
-
-    fun saveDetails(details: String)
-
-    suspend fun init(): NumbersResult
-
-    suspend fun factAboutNumber(number: String): NumbersResult
-
-    suspend fun factAboutRandomNumber(): NumbersResult
+interface NumbersInteractor :
+    NumbersInitialUseCase,
+    NumbersFactUseCase,
+    RandomNumbersFactUseCase,
+    NumberDetailsUseCase {
 
     class Base(
         private val repository: NumbersRepository,
@@ -33,4 +29,20 @@ interface NumbersInteractor {
             repository.randomNumberFact()
         }
     }
+}
+
+interface NumbersInitialUseCase {
+    suspend fun init(): NumbersResult
+}
+
+interface NumbersFactUseCase {
+    suspend fun factAboutNumber(number: String): NumbersResult
+}
+
+interface RandomNumbersFactUseCase {
+    suspend fun factAboutRandomNumber(): NumbersResult
+}
+
+interface NumberDetailsUseCase {
+    fun saveDetails(details: String)
 }
