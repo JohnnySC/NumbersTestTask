@@ -2,7 +2,13 @@ package com.github.johnnysc.numberstesttask.numbers.presentation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.github.johnnysc.numberstesttask.main.presentation.*
+import com.github.johnnysc.numberstesttask.main.presentation.BaseViewModel
+import com.github.johnnysc.numberstesttask.main.presentation.Init
+import com.github.johnnysc.numberstesttask.main.presentation.NavigationCommunication
+import com.github.johnnysc.numberstesttask.main.presentation.NavigationStrategy
+import com.github.johnnysc.numberstesttask.main.presentation.RunAsync
+import com.github.johnnysc.numberstesttask.main.presentation.Screen
+import com.github.johnnysc.numberstesttask.main.presentation.UiFeature
 import com.github.johnnysc.numberstesttask.numbers.domain.NumberDetailsUseCase
 
 /**
@@ -11,13 +17,13 @@ import com.github.johnnysc.numberstesttask.numbers.domain.NumberDetailsUseCase
 interface NumbersViewModel : Init, FetchNumbers, ObserveNumbers, ClearError, ShowDetails {
 
     class Base(
-        dispatchersList: DispatchersList,
+        runAsync: RunAsync,
         private val initial: UiFeature,
         private val numberFact: NumbersFactFeature,
         private val randomNumberFact: UiFeature,
         private val showDetails: ShowDetails,
         private val communications: NumbersCommunications
-    ) : BaseViewModel(dispatchersList), NumbersViewModel {
+    ) : BaseViewModel(runAsync), NumbersViewModel {
 
         override fun observeProgress(owner: LifecycleOwner, observer: Observer<Int>) =
             communications.observeProgress(owner, observer)

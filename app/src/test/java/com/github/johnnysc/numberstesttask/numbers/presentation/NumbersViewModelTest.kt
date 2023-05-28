@@ -7,9 +7,7 @@ import com.github.johnnysc.numberstesttask.numbers.domain.NumberFact
 import com.github.johnnysc.numberstesttask.numbers.domain.NumberUiMapper
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersInteractor
 import com.github.johnnysc.numberstesttask.numbers.domain.NumbersResult
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -35,7 +33,7 @@ class NumbersViewModelTest : BaseTest() {
         val mapper = NumbersResultMapper(communications, NumberUiMapper())
         viewModel =
             NumbersViewModel.Base(
-                TestDispatchersList(),
+                FakeRunAsync(),
                 NumbersInitialFeature(communications, mapper, interactor),
                 NumbersFactFeature.Base(manageResources, communications, mapper, interactor),
                 RandomNumberFactFeature(interactor, communications, mapper),
@@ -197,14 +195,6 @@ class NumbersViewModelTest : BaseTest() {
             fetchAboutRandomNumberCalledList.add(result)
             return result
         }
-    }
-
-    private class TestDispatchersList(
-        private val dispatcher: CoroutineDispatcher = TestCoroutineDispatcher()
-    ) : DispatchersList {
-
-        override fun io(): CoroutineDispatcher = dispatcher
-        override fun ui(): CoroutineDispatcher = dispatcher
     }
 
     private class TestUiMapper : NumberUi.Mapper<String> {

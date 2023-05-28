@@ -1,5 +1,6 @@
 package com.github.johnnysc.numberstesttask.numbers.sl
 
+import com.github.johnnysc.numberstesttask.main.presentation.RunAsync
 import com.github.johnnysc.numberstesttask.main.sl.Core
 import com.github.johnnysc.numberstesttask.main.sl.Module
 import com.github.johnnysc.numberstesttask.numbers.data.BaseNumbersRepository
@@ -38,7 +39,7 @@ class NumbersModule(
             core.provideNumberDetails()
         )
         return NumbersViewModel.Base(
-            core.provideDispatchers(),
+            RunAsync.Base(core.provideDispatchers()),
             NumbersInitialFeature(communications, mapper, interactor),
             NumbersFactFeature.Base(core, communications, mapper, interactor),
             RandomNumberFactFeature(interactor, communications, mapper),
